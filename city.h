@@ -4,13 +4,17 @@
 struct City {
     int distance;
     int cost;
+    long int M;
+    int stays;
 };
 
 struct Path {
     int cost;
-    int num_stays;
+    int stays;
 };
 
-void print_2d_city_array(City**, int, int);
+void print_city_matrix(City**, int, int);
+
+void print_city_array(City*, int);
 
 #endif
