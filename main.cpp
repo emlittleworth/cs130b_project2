@@ -3,6 +3,7 @@
 #include "city.h"
 #include "other_func.h"
 #include "method1.h"
+#include "method2.h"
 #include "method6.h"
 #include "method7.h"
 #include "method8.h"
@@ -49,13 +50,19 @@ int main() {
             city_matrix[i][j].distance = d_i;
             city_matrix[i][j].cost = c_i;
             city_matrix[i][j].M = INF;
-            city_matrix[i][j].stays = 0;
+            city_matrix[i][j].stays = INF;
             city_matrix[i][j].next_city = 0;
             city_matrix[i][j].unique = 1;
         }
     }
 
-    // DEBUG print two-d array
+    // note: cities[n]. M = cities[n].stays = 0
+    for (i = 0; i < m; i++) {
+        city_matrix[i][n].M = 0;
+        city_matrix[i][n].stays = 0;
+    }
+
+    // print two-d array
     //print_city_matrix(city_matrix, m, new_n);
 
     // for each m instances, run method
@@ -63,9 +70,10 @@ int main() {
         Path* p;
         switch (method) {
             case 1:
-                p = dp1(city_matrix[i], n, w, output_fmt);
+                p = dp12(city_matrix[i], n, w, output_fmt, method);
                 break;
             case 2:
+                p = dp12(city_matrix[i], n, w, output_fmt, method);
                 break;
             case 3:
                 break;
@@ -74,10 +82,10 @@ int main() {
             case 5:
                 break;
             case 6:
-                p = dp6(city_matrix[i], n, w);
+                p = dp67(city_matrix[i], n, w, method);
                 break;
             case 7:
-                p = dp7(city_matrix[i], n, w);
+                p = dp67(city_matrix[i], n, w, method);
                 break;
             case 8:
                 p = dp8(city_matrix[i], n, w);

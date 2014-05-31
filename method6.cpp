@@ -24,24 +24,3 @@ int procedure6(City* cities, int n, int w, int i) {
     }
     return cost;
 }
-
-Path* dp6(City* cities, int n, int w) {
-    Path* solution = new Path;
-    int cost;
-    int stays;
-
-    // note: stays = stays - 1 since we are
-    // not counting city n as an overnight stay
-    cost = procedure6(cities, n, w, 1);
-    stays = cities[1].stays - 1;
-
-    solution->cost = cost;
-    solution->stays = stays;
-
-    //print_city_array(cities, n+1);
-    cout << cost << "\n";
-    cout << stays << "\n";
-    cout << "\n";
-
-    return solution;
-}

@@ -15,7 +15,7 @@ void print_city_matrix(City** city_ptr, int m, int n) {
             next_city = city_ptr[i][j].next_city;
             unique = city_ptr[i][j].unique;
             cout << "city-" << j << ": ";
-            cout << "(d = " << dist << ", c = " << cost << ") ";
+            cout << "(d = " << dist << ", c = " << cost;
             cout << ", M = " << M << ", s = " << stays;
             cout << ", n_c = " << next_city << ", u? = " << unique;
             cout << ") " << "\n";
@@ -35,7 +35,7 @@ void print_city_array(City* city_ptr, int n) {
         next_city = city_ptr[i].next_city;
         unique = city_ptr[i].unique;
         cout << "city-" << i << ": ";
-        cout << "(d = " << dist << ", c = " << cost << ") ";
+        cout << "(d = " << dist << ", c = " << cost;
         cout << ", M = " << M << ", s = " << stays;
         cout << ", n_c = " << next_city << ", u? = " << unique;
         cout << ") " << "\n";
