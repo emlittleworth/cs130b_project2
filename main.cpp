@@ -1,11 +1,12 @@
 // Emily Littleworth
 // CS 130B Project 2
 #include "city.h"
+#include "other_func.h"
+#include "method1.h"
 #include "method6.h"
 #include "method7.h"
 #include "method8.h"
 #include <iostream>
-#define INF 1000000000
 using namespace std;
 
 
@@ -38,6 +39,8 @@ int main() {
         city_matrix[i][0].cost = -1;
         city_matrix[i][0].M = -1;
         city_matrix[i][0].stays = -1;
+        city_matrix[i][0].next_city = -1;
+        city_matrix[i][0].unique = -1;
     }
     for (i = 0; i < m; i++) {
         for (j = 1; j < new_n; j++) {
@@ -47,6 +50,8 @@ int main() {
             city_matrix[i][j].cost = c_i;
             city_matrix[i][j].M = INF;
             city_matrix[i][j].stays = 0;
+            city_matrix[i][j].next_city = 0;
+            city_matrix[i][j].unique = 1;
         }
     }
 
@@ -58,6 +63,7 @@ int main() {
         Path* p;
         switch (method) {
             case 1:
+                p = dp1(city_matrix[i], n, w, output_fmt);
                 break;
             case 2:
                 break;
@@ -77,12 +83,9 @@ int main() {
                 p = dp8(city_matrix[i], n, w);
                 break;
         }
-        cout << p->cost << "\n";
-        cout << p->stays << "\n";
         total_cost += p->cost;
         total_stays += p->stays;
         delete p;
-        cout << "\n";
     }
     cout << total_cost << "\n";
     cout << total_stays << "\n";

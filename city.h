@@ -6,6 +6,8 @@ struct City {
     int cost;
     long int M;
     int stays;
+    int next_city;
+    int unique;
 };
 
 struct Path {

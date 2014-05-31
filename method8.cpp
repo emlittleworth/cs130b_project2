@@ -1,7 +1,6 @@
 #include "city.h"
 #include "other_func.h"
 #include <iostream>
-#define INF 1000000000
 using namespace std;
 
 void procedure8(City* cities, int n, int w, int i) {
@@ -14,7 +13,7 @@ void procedure8(City* cities, int n, int w, int i) {
                 cost_i = cities[i].M;
                 cost_j = cities[j].M + cities[j].cost;
                 cities[i].M = min(cost_i, cost_j);
-                // if cities[i].M == cost_i, don't update days
+                // if cities[i].M == cost_i, don't update stays
                 if (cities[i].M == cost_j)
                     cities[i].stays = cities[j].stays + 1;
             } else
@@ -31,16 +30,19 @@ Path* dp8(City* cities, int n, int w) {
     // define M[n] = 0
     cities[n].M = 0;
 
-    procedure8(cities, n, w, 1);
-    cost = cities[1].M;
-    stays = cities[1].stays;
-
     // note: stays = stays - 1 since we are
     // not counting city n as an overnight stay
+    procedure8(cities, n, w, 1);
+    cost = cities[1].M;
+    stays = cities[1].stays - 1;
+
     solution->cost = cost;
-    solution->stays = stays - 1;
+    solution->stays = stays;
 
     //print_city_array(cities, n+1);
+    cout << cost << "\n";
+    cout << stays << "\n";
+    cout << "\n";
 
     return solution;
 }

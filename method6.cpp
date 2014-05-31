@@ -1,7 +1,6 @@
 #include "city.h"
 #include "other_func.h"
 #include <iostream>
-#define INF 1000000000
 using namespace std;
 
 int procedure6(City* cities, int n, int w, int i) {
@@ -17,7 +16,7 @@ int procedure6(City* cities, int n, int w, int i) {
             current = cost;
             newcost = procedure6(cities, n, w, j) + cities[j].cost;
             cost = min(current, newcost);
-            // if cost == current, don't update days
+            // if cost == current, don't update stays
             if (cost == newcost)
                 cities[i].stays = cities[j].stays + 1;
         } else
@@ -31,15 +30,18 @@ Path* dp6(City* cities, int n, int w) {
     int cost;
     int stays;
 
-    cost = procedure6(cities, n, w, 1);
-    stays = cities[1].stays;
-
     // note: stays = stays - 1 since we are
     // not counting city n as an overnight stay
+    cost = procedure6(cities, n, w, 1);
+    stays = cities[1].stays - 1;
+
     solution->cost = cost;
-    solution->stays = stays - 1;
+    solution->stays = stays;
 
     //print_city_array(cities, n+1);
+    cout << cost << "\n";
+    cout << stays << "\n";
+    cout << "\n";
 
     return solution;
 }
