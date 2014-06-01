@@ -2,6 +2,14 @@
 // CS 130B Project 2
 #include "city.h"
 #include "other_func.h"
+#include "method1.h"
+#include "method2.h"
+#include "method3.h"
+//#include "method4.h"
+#include "method5.h"
+#include "method6.h"
+#include "method7.h"
+#include "method8.h"
 #include <iostream>
 using namespace std;
 
@@ -71,12 +79,12 @@ int main() {
                 p = dp12(city_matrix[i], n, w, output_fmt, method);
                 break;
             case 3:
-                p = dp345(city_matrix[i], n, w, output_fmt, method, t);
+                p = dp35(city_matrix[i], n, w, output_fmt, t, method);
                 break;
             case 4:
-                p = dp345(city_matrix[i], n, w, output_fmt, method, t);
                 break;
             case 5:
+                p = dp35(city_matrix[i], n, w, output_fmt, t, method);
                 break;
             case 6:
                 p = dp67(city_matrix[i], n, w, method);

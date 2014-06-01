@@ -1,5 +1,6 @@
 #include "city.h"
 #include "other_func.h"
+#include "method7.h"
 #include <iostream>
 using namespace std;
 
@@ -23,4 +24,28 @@ int procedure6(City* cities, int n, int w, int i) {
             break;
     }
     return cost;
+}
+
+Path* dp67(City* cities, int n, int w, int method) {
+    Path* solution = new Path;
+    int cost;
+    int stays;
+
+    if (method == 6)
+        cost = procedure6(cities, n, w, 1);
+    else
+        cost = procedure7(cities, n, w, 1);
+    // note: stays = stays - 1 since we are
+    // not counting city n as an overnight stay
+    stays = cities[1].stays - 1;
+
+    solution->cost = cost;
+    solution->stays = stays;
+
+    //print_city_array(cities, n+1);
+    cout << cost << "\n";
+    cout << stays << "\n";
+    cout << "\n";
+
+    return solution;
 }

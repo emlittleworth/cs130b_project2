@@ -1,20 +1,16 @@
 #ifndef OTHER_FUNC_H
 #define OTHER_FUNC_H
-
+#include "city.h"
 #define INF 1000000000
 
 int min(int, int);
 
+int max(int, int);
+
 void print_path(City*, int);
 
+void print_matrix(int**, int, int);
+
 int path_unique(City*, int);
-
-Path* dp12(City*, int, int, int, int); 
-
-Path* dp345(City*, int, int, int, int, int);
-
-Path* dp67(City*, int, int, int); 
-
-Path* dp8(City*, int, int); 
 
 #endif

@@ -3,4 +3,6 @@
 
 void procedure8(City*, int, int, int);
 
+Path* dp8(City*, int, int); 
+
 #endif

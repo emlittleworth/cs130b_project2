@@ -1,5 +1,6 @@
 #include "city.h"
 #include "other_func.h"
+#include "method2.h"
 #include <iostream>
 using namespace std;
 
@@ -46,4 +47,41 @@ void procedure1(City* cities, int n, int w, int i) {
                 break;
         }
     }
+}
+
+Path* dp12(City* cities, int n, int w, int output_fmt, int method) {
+    Path* solution = new Path;
+    int unique;
+    int cost;
+    int stays;
+
+    if (method == 1)
+        procedure1(cities, n, w, 1);
+    else
+        procedure2(cities, n, w, 1);
+
+    // note: stays = stays - 1 since we are
+    // not counting city n as an overnight stay
+    unique = path_unique(cities, n);
+    cost = cities[1].M;
+    stays = cities[1].stays - 1;
+
+    solution->cost = cost;
+    solution->stays = stays;
+
+    //print_city_array(cities, n+1);
+    cout << cost << "\n";
+    cout << stays << "\n";
+    if (unique)
+        cout << "unique" << "\n";
+    else
+        cout << "not unique" << "\n";
+
+    // print complete path if output_fmt == 2
+    if (output_fmt == 2)
+        print_path(cities, n);
+
+    cout << "\n";
+
+    return solution;
 }
