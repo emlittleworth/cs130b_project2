@@ -3,4 +3,6 @@
 
 int procedure4(City*, int, int, int, int);
 
+Path* dp4(City*, int, int, int, int);
+
 #endif

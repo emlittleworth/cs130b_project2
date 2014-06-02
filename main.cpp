@@ -5,7 +5,7 @@
 #include "method1.h"
 #include "method2.h"
 #include "method3.h"
-//#include "method4.h"
+#include "method4.h"
 #include "method5.h"
 #include "method6.h"
 #include "method7.h"
@@ -82,6 +82,7 @@ int main() {
                 p = dp35(city_matrix[i], n, w, output_fmt, t, method);
                 break;
             case 4:
+                p = dp4(city_matrix[i], n, w, output_fmt, t);
                 break;
             case 5:
                 p = dp35(city_matrix[i], n, w, output_fmt, t, method);

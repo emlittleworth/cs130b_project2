@@ -87,12 +87,12 @@ Path* dp35(City* cities, int n, int w, int output_fmt, int t, int method) {
             if (matrix[j][1].M != INF) {
                 if (matrix[j][1].M < min_cost) {
                     min_cost = matrix[j][1].M;
+                    cost = min_cost;
                 }
             }
         }
         if (min_cost == INF || (matrix[t+1][1].stays-1) > t)
             does_solution_exist = 0;
-        cost = matrix[t][1].M;
     } else {
         //run procedure 5
         for (i = 1; i < n; i++) {
@@ -146,6 +146,10 @@ Path* dp35(City* cities, int n, int w, int output_fmt, int t, int method) {
         solution->stays = 0;
     }
     cout << "\n";
+
+    for (i = 0; i <= t+1; i++)
+        delete[] matrix[i];
+    delete[] matrix;
 
     return solution;
 }
